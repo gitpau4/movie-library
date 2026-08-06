@@ -1,2 +1,9 @@
 # movie-library
-A movie library application built with Spring Boot, React and PostgreSQL.
+A full-stack movie library application built with:
+
+- Java 21
+- Spring Boot 3
+- React
+- TypeScript
+- PostgreSQL
+- Docker
