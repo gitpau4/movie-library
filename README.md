@@ -1,5 +1,7 @@
+Work in progress.
+
 # movie-library
-A full-stack movie library application built with:
+The goal is to build a full-stack movie library application with:
 
 - Java 21
 - Spring Boot 4.1
