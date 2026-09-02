@@ -1,5 +1,6 @@
 package com.paula.movielibrary.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,11 +15,17 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private Long tmdbId;
+
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String overview;
+    
     private LocalDate releaseDate;
     private String posterPath;
+    private Double rating;
 
     public Movie() {
     }
@@ -65,5 +72,13 @@ public class Movie {
 
     public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 }

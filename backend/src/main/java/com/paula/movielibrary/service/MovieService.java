@@ -1,11 +1,13 @@
 package com.paula.movielibrary.service;
 
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 import com.paula.movielibrary.repository.MovieRepository;
 import com.paula.movielibrary.model.Movie;
+import com.paula.movielibrary.model.TmdbMovie;
 
 @Service
 public class MovieService {
@@ -43,5 +45,18 @@ public class MovieService {
         existingMovie.setPosterPath(updatedMovie.getPosterPath());
 
         return movieRepository.save(existingMovie);
+    }
+
+    public Movie saveMovieFromTmdb(TmdbMovie tmdbMovie) {
+        Movie movie = new Movie();
+
+        movie.setTmdbId(tmdbMovie.getId());
+        movie.setTitle(tmdbMovie.getTitle());
+        movie.setOverview(tmdbMovie.getOverview());
+        movie.setReleaseDate(tmdbMovie.getRelease_date());
+        movie.setPosterPath(tmdbMovie.getPoster_path());
+        movie.setRating(tmdbMovie.getVote_average());
+
+        return movieRepository.save(movie);
     }
 }

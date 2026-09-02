@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.paula.movielibrary.service.MovieService;
 import com.paula.movielibrary.model.Movie;
+import com.paula.movielibrary.model.TmdbMovie;
+import com.paula.movielibrary.service.TmdbService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class MovieController {
     
     private final MovieService movieService;
+    private final TmdbService tmdbService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, TmdbService tmdbService) {
         this.movieService = movieService;
+        this.tmdbService = tmdbService;
     }
 
     @GetMapping
@@ -50,5 +55,11 @@ public class MovieController {
     @PutMapping("/{id}")
     public Movie updateMovie(@PathVariable Long id, @RequestBody Movie movie) {
         return movieService.updateMovie(id, movie);
+    }
+
+    @PostMapping("/from-tmdb/{tmdbId}")
+    public Movie saveMovieFromTmdb(@PathVariable Long tmdbId) {
+        TmdbMovie tmdbMovie = tmdbService.getMovie(tmdbId);
+        return movieService.saveMovieFromTmdb(tmdbMovie);
     }
 }
