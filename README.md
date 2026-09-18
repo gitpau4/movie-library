@@ -7,5 +7,6 @@ The goal is to build a full-stack movie library application with:
 - Spring Boot 4.1
 - React
 - TypeScript
+- Tailwind CSS
 - PostgreSQL
 - Docker
